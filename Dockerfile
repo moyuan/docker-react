@@ -9,6 +9,8 @@ RUN npm run build
 
 # Step 2: copy prod js file to nginx and start nginx
 FROM nginx
+# AWS elasticbeanstalk will use EXPOSE option and expose the port
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # default command of nginx image is to start nginx service
